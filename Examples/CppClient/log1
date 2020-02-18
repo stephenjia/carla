@@ -1,0 +1,446 @@
+make[1]: Entering directory '/home/sekharb/WorkSpace/carla'
+[1;35mSetup.sh: llvm-7.0 already installed.[0m
+[1;35mSetup.sh: boost-1.69.0-c7 already installed.[0m
+[1;35mSetup.sh: rpclib-v2.2.1_c2-c7 already installed.[0m
+[1;35mSetup.sh: gtest-1.8.1-c7 already installed.[0m
+[1;35mSetup.sh: recast-cdce4e-c7 already installed.[0m
+[1;35mSetup.sh: CARLA version 0.9.7-34-g0d7b6d7c-dirty.[0m
+[1;35mSetup.sh: Generating CMake configuration files.[0m
+[1;35mSetup.sh: Success![0m
+make[1]: Leaving directory '/home/sekharb/WorkSpace/carla'
+[1;35mCompiling LibCarla.client...[0m
+[1/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp
+In file included from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:0:
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:9:0,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable: In instantiation of ‘bool std::condition_variable::wait_until(std::unique_lock<std::mutex>&, const std::chrono::time_point<_Clock, _Duration1>&, _Predicate) [with _Clock = std::chrono::_V2::system_clock; _Duration = std::chrono::duration<long int, std::ratio<1, 1000000000> >; _Predicate = carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>]’:
+/usr/include/c++/7/condition_variable:156:72:   required from ‘bool std::condition_variable::wait_for(std::unique_lock<std::mutex>&, const std::chrono::duration<_Rep1, _Period1>&, _Predicate) [with _Rep = long int; _Period = std::ratio<1, 1000>; _Predicate = carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>]’
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:110:   required from here
+/usr/include/c++/7/condition_variable:128:13: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>) ()’
+  while (!__p())
+          ~~~^~
+/usr/include/c++/7/condition_variable:128:13: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:128:13: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note: candidate: carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>
+         send_control_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return run_step.load(); });
+                                                                                 ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note:   candidate expects 1 argument, 0 provided
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable:130:16: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>) ()’
+      return __p();
+             ~~~^~
+/usr/include/c++/7/condition_variable:130:16: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:130:16: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note: candidate: carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>
+         send_control_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return run_step.load(); });
+                                                                                 ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note:   candidate expects 1 argument, 0 provided
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable: In instantiation of ‘bool std::condition_variable::wait_until(std::unique_lock<std::mutex>&, const std::chrono::time_point<_Clock, _Duration1>&, _Predicate) [with _Clock = std::chrono::_V2::system_clock; _Duration = std::chrono::duration<long int, std::ratio<1, 1000000000> >; _Predicate = carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>]’:
+/usr/include/c++/7/condition_variable:156:72:   required from ‘bool std::condition_variable::wait_for(std::unique_lock<std::mutex>&, const std::chrono::duration<_Rep1, _Period1>&, _Predicate) [with _Rep = long int; _Period = std::ratio<1, 1000>; _Predicate = carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>]’
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:109:   required from here
+/usr/include/c++/7/condition_variable:128:13: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>) ()’
+  while (!__p())
+          ~~~^~
+/usr/include/c++/7/condition_variable:128:13: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:128:13: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note: candidate: carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>
+     step_execution_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return !run_step.load(); });
+                                                                               ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note:   candidate expects 1 argument, 0 provided
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable:130:16: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>) ()’
+      return __p();
+             ~~~^~
+/usr/include/c++/7/condition_variable:130:16: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:130:16: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note: candidate: carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>
+     step_execution_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return !run_step.load(); });
+                                                                               ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note:   candidate expects 1 argument, 0 provided
+[2/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/Parameters.cpp.o
+[3/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficLightStage.cpp.o
+[4/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/MotionPlannerStage.cpp.o
+[5/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o -c ../../../LibCarla/source/carla/client/detail/Episode.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/source/carla/client/detail/Episode.cpp:13:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/shared_ptr.hpp:28,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/shared_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/date_time/time_clock.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/date_time/posix_time/posix_time_types.hpp:10,
+                 from ../../../LibCarla/cmake/../source/carla/Time.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:10,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/source/carla/client/detail/Episode.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[6/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o -c ../../../LibCarla/source/carla/client/Vehicle.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/source/carla/client/Vehicle.cpp:15:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/weak_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/enable_shared_from_this.hpp:16,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/enable_shared_from_this.hpp:16,
+                 from ../../../LibCarla/cmake/../source/carla/Memory.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/Actor.h:10,
+                 from ../../../LibCarla/cmake/../source/carla/client/Vehicle.h:9,
+                 from ../../../LibCarla/source/carla/client/Vehicle.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[7/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/TrafficManager.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/Client.h:11,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManager.cpp:7:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/weak_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/enable_shared_from_this.hpp:16,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/enable_shared_from_this.hpp:16,
+                 from ../../../LibCarla/cmake/../source/carla/Memory.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/World.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/Client.h:10,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManager.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[8/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:31:0,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack/v1/unpack_decl.hpp:25:0,
+                 from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack/unpack_decl.hpp:13,
+                 from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack/unpack.hpp:13,
+                 from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack.hpp:27,
+                 from ../../../LibCarla/cmake/../source/carla/MsgPack.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/geom/Transform.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:17,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+In file included from /usr/include/c++/7/memory:80:0,
+                 from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:11,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+/usr/include/c++/7/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = carla::traffic_manager::BatchControlStage; _Args = {const char (&)[20], std::shared_ptr<carla::traffic_manager::Messenger<std::shared_ptr<std::vector<carla::traffic_manager::PlannerToControlData, std::allocator<carla::traffic_manager::PlannerToControlData> > > > >&, carla::client::detail::EpisodeProxyImpl<carla::AtomicSharedPtr<carla::client::detail::Simulator> >&}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<carla::traffic_manager::BatchControlStage>]’:
+../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:78:45:   required from here
+/usr/include/c++/7/bits/unique_ptr.h:825:30: error: no matching function for call to ‘carla::traffic_manager::BatchControlStage::BatchControlStage(const char [20], std::shared_ptr<carla::traffic_manager::Messenger<std::shared_ptr<std::vector<carla::traffic_manager::PlannerToControlData> > > >&, carla::client::detail::EpisodeProxyImpl<carla::AtomicSharedPtr<carla::client::detail::Simulator> >&)’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:31:0,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:60:3: note: candidate: carla::traffic_manager::BatchControlStage::BatchControlStage(std::__cxx11::string, std::shared_ptr<carla::traffic_manager::Messenger<std::shared_ptr<std::vector<carla::traffic_manager::PlannerToControlData> > > >, carla::client::detail::EpisodeProxy&, carla::traffic_manager::Parameters&)
+   BatchControlStage(std::string stage_name,
+   ^~~~~~~~~~~~~~~~~
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:60:3: note:   candidate expects 4 arguments, 3 provided
+[9/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/TrafficManagerRemote.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/Client.h:11,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerRemote.cpp:10:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/weak_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/enable_shared_from_this.hpp:16,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/enable_shared_from_this.hpp:16,
+                 from ../../../LibCarla/cmake/../source/carla/Memory.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/Actor.h:10,
+                 from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerRemote.h:13,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerRemote.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[10/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/LocalizationStage.cpp.o
+[11/12] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/CollisionStage.cpp.o
+ninja: build stopped: subcommand failed.
+[1/8] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/BatchControlStage.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp
+In file included from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:0:
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:9:0,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable: In instantiation of ‘bool std::condition_variable::wait_until(std::unique_lock<std::mutex>&, const std::chrono::time_point<_Clock, _Duration1>&, _Predicate) [with _Clock = std::chrono::_V2::system_clock; _Duration = std::chrono::duration<long int, std::ratio<1, 1000000000> >; _Predicate = carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>]’:
+/usr/include/c++/7/condition_variable:156:72:   required from ‘bool std::condition_variable::wait_for(std::unique_lock<std::mutex>&, const std::chrono::duration<_Rep1, _Period1>&, _Predicate) [with _Rep = long int; _Period = std::ratio<1, 1000>; _Predicate = carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>]’
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:110:   required from here
+/usr/include/c++/7/condition_variable:128:13: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>) ()’
+  while (!__p())
+          ~~~^~
+/usr/include/c++/7/condition_variable:128:13: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:128:13: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note: candidate: carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>
+         send_control_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return run_step.load(); });
+                                                                                 ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note:   candidate expects 1 argument, 0 provided
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable:130:16: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>) ()’
+      return __p();
+             ~~~^~
+/usr/include/c++/7/condition_variable:130:16: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:130:16: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note: candidate: carla::traffic_manager::BatchControlStage::DataSender()::<lambda(std::atomic<bool>&)>
+         send_control_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return run_step.load(); });
+                                                                                 ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:79:81: note:   candidate expects 1 argument, 0 provided
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable: In instantiation of ‘bool std::condition_variable::wait_until(std::unique_lock<std::mutex>&, const std::chrono::time_point<_Clock, _Duration1>&, _Predicate) [with _Clock = std::chrono::_V2::system_clock; _Duration = std::chrono::duration<long int, std::ratio<1, 1000000000> >; _Predicate = carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>]’:
+/usr/include/c++/7/condition_variable:156:72:   required from ‘bool std::condition_variable::wait_for(std::unique_lock<std::mutex>&, const std::chrono::duration<_Rep1, _Period1>&, _Predicate) [with _Rep = long int; _Period = std::ratio<1, 1000>; _Predicate = carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>]’
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:109:   required from here
+/usr/include/c++/7/condition_variable:128:13: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>) ()’
+  while (!__p())
+          ~~~^~
+/usr/include/c++/7/condition_variable:128:13: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:128:13: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note: candidate: carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>
+     step_execution_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return !run_step.load(); });
+                                                                               ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note:   candidate expects 1 argument, 0 provided
+In file included from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:15:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Simulator.h:20,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.h:14,
+                 from ../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:7:
+/usr/include/c++/7/condition_variable:130:16: error: no match for call to ‘(carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>) ()’
+      return __p();
+             ~~~^~
+/usr/include/c++/7/condition_variable:130:16: note: candidate: bool (*)(std::atomic<bool>&) <conversion>
+/usr/include/c++/7/condition_variable:130:16: note:   candidate expects 2 arguments, 1 provided
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note: candidate: carla::traffic_manager::BatchControlStage::RunStep()::<lambda(std::atomic<bool>&)>
+     step_execution_notifier.wait_for(lock, 1ms, [](std::atomic<bool> &run_step) { return !run_step.load(); });
+                                                                               ^
+../../../LibCarla/source/carla/trafficmanager/BatchControlStage.cpp:101:79: note:   candidate expects 1 argument, 0 provided
+[2/8] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerLocal.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:31:0,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack/v1/unpack_decl.hpp:25:0,
+                 from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack/unpack_decl.hpp:13,
+                 from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack/unpack.hpp:13,
+                 from ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include/rpc/msgpack.hpp:27,
+                 from ../../../LibCarla/cmake/../source/carla/MsgPack.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/geom/Transform.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:17,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+In file included from /usr/include/c++/7/memory:80:0,
+                 from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:11,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+/usr/include/c++/7/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = carla::traffic_manager::BatchControlStage; _Args = {const char (&)[20], std::shared_ptr<carla::traffic_manager::Messenger<std::shared_ptr<std::vector<carla::traffic_manager::PlannerToControlData, std::allocator<carla::traffic_manager::PlannerToControlData> > > > >&, carla::client::detail::EpisodeProxyImpl<carla::AtomicSharedPtr<carla::client::detail::Simulator> >&}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<carla::traffic_manager::BatchControlStage>]’:
+../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:78:45:   required from here
+/usr/include/c++/7/bits/unique_ptr.h:825:30: error: no matching function for call to ‘carla::traffic_manager::BatchControlStage::BatchControlStage(const char [20], std::shared_ptr<carla::traffic_manager::Messenger<std::shared_ptr<std::vector<carla::traffic_manager::PlannerToControlData> > > >&, carla::client::detail::EpisodeProxyImpl<carla::AtomicSharedPtr<carla::client::detail::Simulator> >&)’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerLocal.h:31:0,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerLocal.cpp:7:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:60:3: note: candidate: carla::traffic_manager::BatchControlStage::BatchControlStage(std::__cxx11::string, std::shared_ptr<carla::traffic_manager::Messenger<std::shared_ptr<std::vector<carla::traffic_manager::PlannerToControlData> > > >, carla::client::detail::EpisodeProxy&, carla::traffic_manager::Parameters&)
+   BatchControlStage(std::string stage_name,
+   ^~~~~~~~~~~~~~~~~
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:60:3: note:   candidate expects 4 arguments, 3 provided
+[3/8] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManagerRemote.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/TrafficManagerRemote.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/Client.h:11,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerRemote.cpp:10:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/weak_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/enable_shared_from_this.hpp:16,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/enable_shared_from_this.hpp:16,
+                 from ../../../LibCarla/cmake/../source/carla/Memory.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/Actor.h:10,
+                 from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManagerRemote.h:13,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManagerRemote.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[4/8] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/Vehicle.cpp.o -c ../../../LibCarla/source/carla/client/Vehicle.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/source/carla/client/Vehicle.cpp:15:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/weak_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/enable_shared_from_this.hpp:16,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/enable_shared_from_this.hpp:16,
+                 from ../../../LibCarla/cmake/../source/carla/Memory.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/Actor.h:10,
+                 from ../../../LibCarla/cmake/../source/carla/client/Vehicle.h:9,
+                 from ../../../LibCarla/source/carla/client/Vehicle.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[5/8] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/client/detail/Episode.cpp.o -c ../../../LibCarla/source/carla/client/detail/Episode.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/source/carla/client/detail/Episode.cpp:13:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/shared_ptr.hpp:28,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/shared_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/date_time/time_clock.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/date_time/posix_time/posix_time_types.hpp:10,
+                 from ../../../LibCarla/cmake/../source/carla/Time.h:11,
+                 from ../../../LibCarla/cmake/../source/carla/RecurrentSharedFuture.h:10,
+                 from ../../../LibCarla/cmake/../source/carla/client/detail/Episode.h:11,
+                 from ../../../LibCarla/source/carla/client/detail/Episode.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+[6/8] Building CXX object LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o
+FAILED: LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o 
+/usr/bin/g++-7  -DBOOST_ERROR_CODE_HEADER_ONLY -DLIBCARLA_IMAGE_WITH_PNG_SUPPORT=true -DLIBCARLA_TEST_CONTENT_FOLDER=\"/home/sekharb/WorkSpace/carla/Build/test-content\" -I../../../LibCarla/cmake/../source -I../../../LibCarla/cmake/../source/third-party -isystem ../../../Build/boost-1.69.0-c7-install/include -isystem ../../../Build/rpclib-v2.2.1_c2-c7-libstdcxx-install/include -isystem ../../../Build/recast-cdce4e-c7-install/include -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra -std=c++14 -pthread -fPIC -O0 -DNDEBUG -g -Wall -Wextra   -O3 -DNDEBUG -MD -MT LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o -MF LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o.d -o LibCarla/cmake/client/CMakeFiles/carla_client.dir/__/__/source/carla/trafficmanager/TrafficManager.cpp.o -c ../../../LibCarla/source/carla/trafficmanager/TrafficManager.cpp
+In file included from ../../../LibCarla/cmake/../source/carla/trafficmanager/TrafficManager.h:31:0,
+                 from ../../../LibCarla/cmake/../source/carla/client/Client.h:11,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManager.cpp:7:
+../../../LibCarla/cmake/../source/carla/trafficmanager/BatchControlStage.h:52:31: error: use of deleted function ‘std::atomic<bool>::atomic(const std::atomic<bool>&)’
+   std::atomic_bool run_step = false;
+                               ^~~~~
+In file included from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:20:0,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/sp_counted_base.hpp:48,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/detail/shared_count.hpp:29,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/weak_ptr.hpp:17,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/smart_ptr/enable_shared_from_this.hpp:16,
+                 from ../../../Build/boost-1.69.0-c7-install/include/boost/enable_shared_from_this.hpp:16,
+                 from ../../../LibCarla/cmake/../source/carla/Memory.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/World.h:9,
+                 from ../../../LibCarla/cmake/../source/carla/client/Client.h:10,
+                 from ../../../LibCarla/source/carla/trafficmanager/TrafficManager.cpp:7:
+/usr/include/c++/7/atomic:71:5: note: declared here
+     atomic(const atomic&) = delete;
+     ^~~~~~
+/usr/include/c++/7/atomic:75:15: note:   after user-defined conversion: constexpr std::atomic<bool>::atomic(bool)
+     constexpr atomic(bool __i) noexcept : _M_base(__i) { }
+               ^~~~~~
+ninja: build stopped: subcommand failed.
+[1;35mCompiling C++ Client...[0m
+Makefile:28: recipe for target '/home/sekharb/WorkSpace/carla/Examples/CppClient/bin/cpp_client' failed
+Makefile:28: recipe for target '/home/sekharb/WorkSpace/carla/Examples/CppClient/bin/cpp_client' failed
+Makefile:28: recipe for target '/home/sekharb/WorkSpace/carla/Examples/CppClient/bin/cpp_client' failed
