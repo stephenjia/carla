@@ -9,7 +9,7 @@
 
   * [Python API tutorial](core_concepts.md)
   * [Configuring the simulation](configuring_the_simulation.md)
-  * [Cameras and sensors](cameras_and_sensors.md)
+  * [Cameras and sensors](core_sensors.md)
   * [F.A.Q.](faq.md)
 
 <h3>Building from source</h3>
