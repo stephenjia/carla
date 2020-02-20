@@ -190,8 +190,8 @@ namespace LocalizationConstants {
       Wheel front_right = wheels.at(1);
       Wheel back_left = wheels.at(2);
       Wheel back_right = wheels.at(3);
-      cg::Location front_axle_position = cg::Location(0.01 *(front_left.position + front_right.position)/2.0f);
-      cg::Location back_axle_position = cg::Location(0.01 * (back_left.position + back_right.position)/2.0f);
+      cg::Location front_axle_position = cg::Location(0.01f *(front_left.position + front_right.position)/2.0f);
+      cg::Location back_axle_position = cg::Location(0.01f * (back_left.position + back_right.position)/2.0f);
 
       // Finding the closest point on the path to the center of the front axle.
       SimpleWaypointPtr target_waypoint = waypoint_buffer.front();

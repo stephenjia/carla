@@ -80,7 +80,7 @@ namespace PIDControllerConstants {
 
     // Lateral (Hoffmann-Stanley) controller calculation.
     float steer_angle = present_state.deviation +
-                        std::atan((1.0f + 0*lateral_parameters.front()) * present_state.distance / (present_state.horizontal_velocity + 0.001));
+                        static_cast<float>(std::atan((1.0f + 0*lateral_parameters.front()) * present_state.distance / (present_state.horizontal_velocity + 0.001)));
     // Accounting for change of co-ordinate system from carla to unreal by multiplying with -1.
     // Also, converting calculated steer angle to fraction of maximum allowed.
     float steer_actuation_signal = (steer_angle/max_steer_angle);
